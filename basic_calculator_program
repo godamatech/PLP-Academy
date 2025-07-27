@@ -1,0 +1,16 @@
+def basic_calculator():
+    inp_1 = int(input("Enter the first Number: "))
+    inp_2 = int(input("Enter the second Number: "))
+    operator = input("Enter an Operator(+, -, x, /): ")
+
+    if operator == "+":
+        return inp_1 + inp_2
+    elif operator == "-":
+        return inp_1 - inp_2
+    elif operator == "/":
+        return inp_1 / inp_2
+    elif operator == "x":
+        return inp_1 * inp_2
+    else: return "Invalid Operator!!!"
+
+print(basic_calculator())
