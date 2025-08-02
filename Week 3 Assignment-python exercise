@@ -1,0 +1,4 @@
+def calculate_discount(price, discount_percent):
+    if discount_percent >= 20:
+        return (price - (discount_percent/100) * price)
+    return price
