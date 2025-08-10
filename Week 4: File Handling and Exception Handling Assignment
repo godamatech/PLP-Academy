@@ -1,0 +1,26 @@
+# module 4 challenge
+try:
+    f = open("input.txt", "r")
+
+    data = f.read().upper()
+    data_count = len(data.split())
+
+    fl = open("output.txt", "w")
+    fl.write(f"{data} \nTotal Number of words: {data_count}")
+    print("Done!!!")
+except FileNotFoundError:
+    print("File does not exist!")
+    
+finally:
+    f.close()
+
+
+# Second Task
+file_name = input("Enter the file name to read from: ")
+try:
+    f = open(file_name, 'r')
+    print(f.read())
+except FileNotFoundError:
+    print("This file can not be read!!!")
+finally:
+    f.close()
