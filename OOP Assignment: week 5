@@ -1,0 +1,82 @@
+# Assignment 1: Custom Class
+class Smartphone:
+    # Constructor with attributes
+    def __init__(self, brand, model, price, battery_level):
+        self.brand = brand
+        self.model = model
+        self.price = price
+        self.__battery_level = battery_level   # Encapsulated attribute (private)
+
+    # Methods
+    def call(self, number):
+        print(f"{self.brand} {self.model} is calling {number}...")
+
+    def charge(self, amount):
+        self.__battery_level += amount
+        if self.__battery_level > 100:
+            self.__battery_level = 100
+        print(f"Battery charged. Current level: {self.__battery_level}%")
+
+    def display_info(self):
+        print(f"{self.brand} {self.model} - Price: ${self.price}, Battery: {self.__battery_level}%")
+
+    # Encapsulation (getter & setter)
+    def get_battery_level(self):
+        return self.__battery_level
+
+    def set_battery_level(self, level):
+        if 0 <= level <= 100:
+            self.__battery_level = level
+        else:
+            print("Invalid battery level!")
+
+# Child class (Inheritance)
+class Android(Smartphone):
+    def use_play_store(self):
+        print(f"{self.brand} {self.model} is downloading an app from Play Store.")
+
+class iPhone(Smartphone):
+    def use_app_store(self):
+        print(f"{self.brand} {self.model} is downloading an app from App Store.")
+
+
+# Assignment 1 - Testing
+print("\n--- Assignment 1: Smartphone Example ---")
+phone1 = Android("Samsung", "Galaxy S23", 1200, 80)
+phone2 = iPhone("Apple", "iPhone 15", 1500, 60)
+
+phone1.display_info()
+phone1.call("+2347060608944")
+phone1.use_play_store()
+phone1.charge(15)
+
+phone2.display_info()
+phone2.use_app_store()
+phone2.set_battery_level(110)  # Invalid case (encapsulation demo)
+print(f"Battery after update: {phone2.get_battery_level()}%")
+
+
+# Activity 2: Polymorphism
+class Vehicle:
+    def move(self):
+        print("This vehicle moves...")
+
+class Car(Vehicle):
+    def move(self):
+        print("The car is driving on the road.")
+
+class Plane(Vehicle):
+    def move(self):
+        print("The plane is flying in the sky.")
+
+class Boat(Vehicle):
+    def move(self):
+        print("The boat is sailing on the water.")
+
+
+# Activity 2 - Testing
+print("\n--- Activity 2: Polymorphism Example ---")
+vehicles = [Car(), Plane(), Boat()]
+
+for v in vehicles:
+    v.move()
